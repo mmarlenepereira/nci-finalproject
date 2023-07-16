@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineMail, AiOutlinePhone, AiOutlineInstagram } from 'react-icons/ai';
-import logo from './images/pottersapplogo.png';
+import logo from './images/NCI_logo.png';
 
 function Footer() {
   return (
@@ -8,7 +8,7 @@ function Footer() {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-3 col-md-6"> {/* col-md-6 to ensure responsiveness on medium-sized screens */}
-            <img src={logo} alt="Logo" style={{ width: '80%', height: 'auto' }} />
+            <img src={logo} alt="Logo" style={{ width: '35%', height: 'auto' }} />
           </div>
           <div className="col-lg-6 col-md-6 text-center"> {/* col-md-6 to ensure responsiveness on medium-sized screens */}
             <p className="mb-0">The Potter's App</p>

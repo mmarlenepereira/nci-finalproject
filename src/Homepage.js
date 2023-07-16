@@ -83,7 +83,10 @@ function Homepage() {
             <div className="card-body">
               <h3>Total Clients: {totalClients}</h3>
               <Link to="/clients" className="btn btn-primary">
-                View Clients
+                View All Customers
+              </Link>
+              <Link to="/new-client" className="btn btn-primary ms-3">
+                Create New Customer
               </Link>
             </div>
           </div>

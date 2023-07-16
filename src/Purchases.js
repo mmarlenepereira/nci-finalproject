@@ -23,17 +23,21 @@ function Purchases() {
     const fetchPurchases = async () => {
       try {
         let url = 'http://127.0.0.1:3000/purchases';
-
         if (clientId) {
           url += `?clientId=${clientId}`;
         }
-
         const response = await axios.get(url);
-        setPurchases(response.data);
+        const updatedPurchases = response.data.map((purchase) => ({
+          ...purchase,
+          quantity: purchase.quantity,
+          total: purchase.total,
+        }));
+        setPurchases(updatedPurchases);
       } catch (error) {
         console.error(error);
       }
     };
+
 
     fetchPurchases();
   }, [clientId]);
@@ -61,6 +65,10 @@ function Purchases() {
         : b.product_name.localeCompare(a.product_name);
     } else if (sortColumn === 'price') {
       return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+    } else if (sortColumn === 'quantity') {
+      return sortOrder === 'asc' ? a.quantity - b.quantity : b.quantity - a.quantity;
+    } else if (sortColumn === 'total') {
+      return sortOrder === 'asc' ? a.total - b.total : b.total - a.total;
     } else if (sortColumn === 'payment_terms') {
       return sortOrder === 'asc'
         ? a.payment_terms.localeCompare(b.payment_terms)
@@ -76,10 +84,14 @@ function Purchases() {
   });
 
 
+
+
+
     // HandleSort function handles the sorting logic based on the clicked column header.
   return (
     <div className="container">
       <h1>Orders</h1>
+      <br></br>
       <table className="table">
         <thead>
           <tr>
@@ -95,6 +107,12 @@ function Purchases() {
             <th onClick={() => handleSort('price')}>
               Price (EUR) {sortColumn === 'price' && (sortOrder === 'asc' ? '↑' : '↓')}
             </th>
+            <th onClick={() => handleSort('quantity')}>
+              Quantity {sortColumn === 'quantity' && (sortOrder === 'asc' ? '↑' : '↓')}
+              </th>
+              <th onClick={() => handleSort('total')}>
+                Total (EUR) {sortColumn === 'total' && (sortOrder === 'asc' ? '↑' : '↓')}
+                </th>
             <th onClick={() => handleSort('payment_terms')}>
               Payment Terms {sortColumn === 'payment_terms' && (sortOrder === 'asc' ? '↑' : '↓')}
             </th>
@@ -115,6 +133,8 @@ function Purchases() {
               <td>{`${purchase.client.first_name} ${purchase.client.last_name}`}</td>
               <td>{purchase.product_name}</td>
               <td>{purchase.price}</td>
+              <td>{purchase.quantity}</td>
+              <td>{purchase.total}</td>
               <td>{purchase.payment_terms}</td>
               <td>{purchase.delivery_date}</td>
               <td>{purchase.status}</td>

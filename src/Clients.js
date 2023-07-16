@@ -66,6 +66,7 @@ function Clients() {
   return (
     <div className="container">
       <h1>Customers</h1>
+      <br></br>
       <table className="table">
         <thead>
           <tr>

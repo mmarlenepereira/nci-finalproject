@@ -5,12 +5,12 @@
   "dependencies": {
     "@remix-run/router": "^1.7.1",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "chart.js": "^4.3.0",
     "highcharts": "^11.1.0",
+    "highcharts-more": "^0.1.7",
     "highcharts-react-official": "^3.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --config=jest.config.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,11 +47,28 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/react": "^14.0.0",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
     "postcss-loader": "^7.3.3",
     "resolve-url-loader": "^5.0.0",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
+      "\\.(png|jpg|jpeg|gif|svg)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "^highcharts$": "<rootDir>/src/__mocks__/highchartsMock.js",
+      "^highcharts/css/highcharts.css$": "<rootDir>/src/__mocks__/styleMock.js"
+    },
+    "testEnvironment": "jsdom"
   }
 }

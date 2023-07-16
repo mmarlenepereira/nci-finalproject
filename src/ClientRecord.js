@@ -39,6 +39,15 @@ function ClientRecord() {
           setTimeout(() => {
             navigate('/clients');
           }, 1000); // Delay of 1 second (can be adjusted)
+
+          // Fetch the updated client data after deletion
+          axios.get(`http://127.0.0.1:3000/clients/${id}`)
+            .then((response) => {
+              setClient(response.data);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
         })
         .catch((error) => {
           console.error(error);
@@ -53,11 +62,12 @@ function ClientRecord() {
   return (
     <div className="container"> {/* Apply the 'container' class for responsive layout */}
       <h2>Customer #{id}</h2>
-      <p>First Name: {client.first_name}</p>
-      <p>Last Name: {client.last_name}</p>
-      <p>Phone Number: {client.phone_number}</p>
-      <p>Email: {client.email}</p>
-      <p>Address: {client.address}</p>
+      <br></br>
+      <p><b>First Name:</b> {client.first_name}</p>
+      <p><b>Last Name:</b> {client.last_name}</p>
+      <p><b>Phone Number:</b> {client.phone_number}</p>
+      <p><b>Email:</b> {client.email}</p>
+      <p><b>Address:</b> {client.address}</p>
       <br></br>
       <h5>Total Orders placed by {client.first_name} {client.last_name}:  {client.order_count}</h5>
       <p>

@@ -92,6 +92,7 @@ function NewPurchase() {
   return (
     <div className="container">
       <h2>New Order for Customer # {clientId}</h2>
+      <br></br>
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

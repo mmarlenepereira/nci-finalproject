@@ -47,6 +47,7 @@ function PurchaseRecord() {
   return (
     <div className="container">
       <h2>Order #{id}</h2>
+      <br></br>
       <h5>
         Customer:{' '}
         <Link to={`/clients/${purchase.client.id}`}>
@@ -54,14 +55,16 @@ function PurchaseRecord() {
         </Link>
       </h5>
       <p></p>
-      <p>Product Name: {purchase.product_name}</p>
-      <p>Description: {purchase.description}</p>
-      <p>Inspiration Image: {purchase.image}</p>
-      <p>Price (EUR): {purchase.price}</p>
-      <p>Payment Terms: {purchase.payment_terms}</p>
-      <p>Order Date: {purchase.created_at}</p>
-      <p>Delivery Date: {purchase.delivery_date}</p>
-      <p>Status: {purchase.status}</p>
+      <p><b>Product Name:</b> {purchase.product_name}</p>
+      <p><b>Description:</b> {purchase.description}</p>
+      <p><b>Inspiration Image:</b> <a href={purchase.image}>{purchase.image}</a></p>
+      <p><b>Price (EUR):</b> {purchase.price}</p>
+      <p><b>Quantity:</b> {purchase.quantity}</p>
+      <p><b>Total:</b> {purchase.total}</p>
+      <p><b>Payment Terms:</b> {purchase.payment_terms}</p>
+      <p><b>Order Date:</b> {purchase.created_at}</p>
+      <p><b>Delivery Date:</b> {purchase.delivery_date}</p>
+      <p><b>Status:</b>  {purchase.status}</p>
 
       <div className="row mt-3">
         <div className="col">

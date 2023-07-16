@@ -60,6 +60,7 @@ function NewClient() {
   return (
     <div className="container">
       <h2>Add New Client</h2>
+      <br></br>
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

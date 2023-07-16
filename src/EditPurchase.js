@@ -15,6 +15,7 @@ function EditPurchase() {
   const [paymentTerms, setPaymentTerms] = useState('100% upfront');
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const [quantity, setQuantity] = useState(1); // Add quantity state with a default value
 
   useEffect(() => {
     // Fetch the purchase data by ID
@@ -26,6 +27,7 @@ function EditPurchase() {
         setProductName(purchase.product_name);
         setDescription(purchase.description);
         setPrice(String(purchase.price));
+        setQuantity(purchase.quantity); // Newly added column (post all config). Set the quantity value. Total will be automatically calcyl
         setDeliveryDate(purchase.delivery_date);
         setImage(purchase.image);
         setStatus(purchase.status);
@@ -78,15 +80,18 @@ function EditPurchase() {
       return;
     }
 
+    //put request
     try {
       const response = await axios.put(`http://localhost:3000/purchases/${id}`, {
         product_name: productName,
         description,
         price: parseFloat(price),
+        quantity: parseInt(quantity), // Newly added field. Total will be calculated based on price and quantity
+        total: parseFloat(price) * parseInt(quantity), // Calculate the total
         delivery_date: deliveryDate,
         image,
         status,
-        payment_terms: paymentTerms,
+        payment_terms: paymentTerms
       });
 
       console.log(response.data);
@@ -104,6 +109,7 @@ function EditPurchase() {
   return (
     <div className="container">
       <h2>Update Order Details </h2>
+      <br></br>
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <p></p>
       <form onSubmit={handleSubmit}>
@@ -140,6 +146,17 @@ function EditPurchase() {
             required
           />
           {errors.price && <div className="text-danger">{errors.price}</div>}
+        </div>
+        <p></p>
+        <div className="form-group">
+          <label>Quantity:</label>
+          <input
+          type="number"
+          className="form-control"
+          value={quantity}
+          onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
+          required
+          />
         </div>
         <p></p>
         <div className="form-group">
