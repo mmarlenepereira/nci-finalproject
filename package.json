@@ -60,15 +60,11 @@
     "style-loader": "^3.3.3"
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.js"
-    ],
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
       "\\.(png|jpg|jpeg|gif|svg)$": "<rootDir>/src/__mocks__/fileMock.js",
       "^highcharts$": "<rootDir>/src/__mocks__/highchartsMock.js",
       "^highcharts/css/highcharts.css$": "<rootDir>/src/__mocks__/styleMock.js"
-    },
-    "testEnvironment": "jsdom"
+    }
   }
 }

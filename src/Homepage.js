@@ -78,10 +78,10 @@ function Homepage() {
       <br />
       <div className="row">
         <div className="col-md-6">  {/* Render the Scorecard: Clients*/}
-          <h2>Clients</h2>
+          <h2>Customers</h2>
           <div className="card">
             <div className="card-body">
-              <h3>Total Clients: {totalClients}</h3>
+              <h3>Total Customers: {totalClients}</h3>
               <Link to="/clients" className="btn btn-primary">
                 View All Customers
               </Link>

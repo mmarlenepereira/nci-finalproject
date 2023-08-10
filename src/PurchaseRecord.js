@@ -60,7 +60,7 @@ function PurchaseRecord() {
       <p><b>Inspiration Image:</b> <a href={purchase.image}>{purchase.image}</a></p>
       <p><b>Price (EUR):</b> {purchase.price}</p>
       <p><b>Quantity:</b> {purchase.quantity}</p>
-      <p><b>Total:</b> {purchase.total}</p>
+      <p><b>Total (EUR):</b> {purchase.total}</p>
       <p><b>Payment Terms:</b> {purchase.payment_terms}</p>
       <p><b>Order Date:</b> {purchase.created_at}</p>
       <p><b>Delivery Date:</b> {purchase.delivery_date}</p>

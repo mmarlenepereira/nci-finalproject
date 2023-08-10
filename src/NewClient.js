@@ -123,7 +123,7 @@ function NewClient() {
           />
           {errors.address && <div className="text-danger">{errors.address}</div>}
         </div>
-        <button type="submit" className="btn btn-primary me-2">Add Client</button> {/* me-2 adds a small margin to the right side of the button. This will create a slight separation between the two buttons. */}
+        <button type="submit" className="btn btn-primary me-2">Save New Customer</button> {/* me-2 adds a small margin to the right side of the button. This will create a slight separation between the two buttons. */}
         <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
       </form>
     </div>

@@ -147,6 +147,3 @@ function Purchases() {
 }
 
 export default Purchases;
-
-
-

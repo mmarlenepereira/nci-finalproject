@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-//import Highcharts from 'highcharts';
-//jest.mock('highcharts', () => require('__mocks__/highcharts'));
+import Highcharts from 'highcharts';
+
+jest.mock('highcharts', () => require('__mocks__/highcharts'));
 
 
 test('renders learn react link', () => {

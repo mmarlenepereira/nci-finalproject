@@ -108,7 +108,7 @@ function Clients() {
         </tbody>
       </table>
       <Link to="/new-client">
-        <button className="btn btn-primary">Create New Client</button>
+        <button className="btn btn-primary">Create New Customer</button>
       </Link>
     </div>
   );

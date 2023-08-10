@@ -240,7 +240,7 @@ function NewPurchase() {
             </div>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary me-3">Add Purchase</button>
+        <button type="submit" className="btn btn-primary me-3">Save New Order</button>
         <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
       </form>
     </div>

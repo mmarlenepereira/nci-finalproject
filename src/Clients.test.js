@@ -1,41 +1,42 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import axios from 'axios';
 import Clients from './Clients';
-import App from './App';
-import axios from './__mocks__/axios';
 
-jest.mock('highcharts', () => ({
-  // Empty mock object for the Highcharts module
-}));
+jest.mock('axios'); // Mock Axios module
 
-jest.mock('highcharts/modules/timeline', () => () => {
-  // Mock for the highcharts/modules/timeline module
-});
+describe('Clients Component', () => {
+  it('displays loading message initially', () => {
+    render(<Clients />);
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+  });
 
-describe('Clients', () => {
-  test('displays a list of clients', async () => {
-    const clients = [
-      { id: 1, name: 'Client 1' },
-      { id: 2, name: 'Client 2' },
-    ];
-
-    axios.get.mockResolvedValue({ data: { clients } });
+  it('displays client data after fetching', async () => {
+    // Mock Axios.get to return sample data
+    axios.get.mockResolvedValueOnce({
+      data: {
+        clients: [
+          {
+            id: 100,
+            first_name: 'Ana',
+            last_name: 'Gomes',
+            phone_number: '087695385',
+            email: 'anagomes@yahoo.cm'
+          },
+        ],
+      },
+    });
 
     render(<Clients />);
 
-    await screen.findByText('Client 1');
-
-    expect(screen.getByText('Client 1')).toBeInTheDocument();
-    expect(screen.getByText('Client 2')).toBeInTheDocument();
+    // Assertions for client data display
+    await screen.findByText('Ana Gomes');
+    // ...
   });
+
 });
 
-jest.mock('./images/pottersapplogo.png', () => 'mocked-image-path');
 
-describe('App', () => {
-  test('renders without errors', () => {
-    render(<App />);
-  });
-});
+
 
 
